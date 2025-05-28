@@ -1,34 +1,34 @@
+import { credentialRepository, userRepository } from "../config/data-source";
 import ICreateUserDTO from "../dtos/ICreateUserDTO";
-import IUser from "../interfaces/IUser";
+import User from "../entities/User";
 import { createCredentialService } from "./credentialsServices";
 
-const usersDB:IUser[] = [];
-let usersId:number = 1
-
-export const getUserService = async (): Promise<IUser[]> => {
-    return usersDB
+export const getUserService = async (): Promise<User[]> => {
+    return await userRepository.find();
 }
 
-export const getUserByIdService = async (id: number): Promise<IUser> => {
-    const foundUser: IUser | undefined = usersDB.find((user) => user.id == id)
+export const getUserByIdService = async (id: number): Promise<User> => {
+    const foundUser: User | null = await userRepository.findOne({
+        where: {id}    
+    })
     if(!foundUser) throw new Error("User not found");
     return foundUser;
 }
 
-export const createUserService = async (createUserDTO: ICreateUserDTO): Promise<IUser> => {
-    const newCredentialId = await createCredentialService(
-        createUserDTO.username, 
-        createUserDTO.password)
-    
-    const newUser: IUser = {
-        id: usersId++,
+export const createUserService = async (createUserDTO: ICreateUserDTO): Promise<User> => {
+    const newUser: User = await userRepository.create({
         name: createUserDTO.name,
         email: createUserDTO.email,
         birthdate: createUserDTO.birthdate,
         nDni: createUserDTO.nDni,
-        credentialsId: newCredentialId
-    }
+    });
 
-    usersDB.push(newUser)
-    return newUser;
+    const newCredential = await createCredentialService(
+        createUserDTO.username, 
+        createUserDTO.password
+    );
+
+    newUser.credentials = newCredential
+    const results:User=await userRepository.save(newUser)
+    return results;
 }

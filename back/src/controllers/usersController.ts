@@ -1,11 +1,11 @@
 import { Request, Response } from "express"
-import IUser from "../interfaces/IUser";
 import { createUserService, getUserByIdService, getUserService } from "../services/usersService";
 import { validateCredentialServise } from "../services/credentialsServices";
+import User from "../entities/User";
 
 export const getUsersController = async (req:Request, res:Response) => {
     try{
-        const users: IUser[] = await getUserService();
+        const users: User[] = await getUserService();
         res.status(200).json({
             success: true,
             data: users
@@ -21,13 +21,13 @@ export const getUsersController = async (req:Request, res:Response) => {
 export const getUserByIdController = async (req:Request, res:Response) => {
     try{
         const {id} = req.params;
-        const users: IUser = await getUserByIdService(Number(id));
+        const users: User = await getUserByIdService(Number(id));
         res.status(200).json({
             success: true,
             data: users
         })
     }   catch (error:any) {
-        res.status(500).json({
+        res.status(404).json({
             success:false,
             message: error.message
         })
@@ -37,13 +37,13 @@ export const getUserByIdController = async (req:Request, res:Response) => {
 export const registerUsersController = async (req:Request, res:Response) => {
     try{
         const {name, email, birthdate, nDni, username, password} = req.body;
-        const users: IUser = await createUserService({name, email, birthdate, nDni, username, password});
+        const users: User = await createUserService({name, email, birthdate, nDni, username, password});
         res.status(201).json({
             success: true,
             data: users
         })
     }   catch (error:any) {
-        res.status(500).json({
+        res.status(400).json({
             success:false,
             message: error.message
         })
@@ -59,7 +59,7 @@ export const loginUsersController = async (req:Request, res:Response) => {
             data: credentialId
         })
     }   catch (error:any) {
-        res.status(500).json({
+        res.status(400).json({
             success:false,
             message: error.message
         })

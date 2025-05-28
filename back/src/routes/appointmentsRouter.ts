@@ -3,13 +3,13 @@ import { cancelAppointmentsController, createAppointmentsController, getAppointm
 
 const appointmentsRouter = Router();
 
-appointmentsRouter.get("/", getAppointmentsController)
+appointmentsRouter.get("/appointment", getAppointmentsController)
 
-appointmentsRouter.get("/:id", getAppointmentByIdController)
+appointmentsRouter.get("/appointment/:id", getAppointmentByIdController)
 
-appointmentsRouter.post("/schedule", createAppointmentsController)
+appointmentsRouter.post("/appointment/schedule", createAppointmentsController)
 
-appointmentsRouter.put("/cancel/:id", cancelAppointmentsController)
+appointmentsRouter.put("/appointment/cancel/:id", cancelAppointmentsController)
 
 export default appointmentsRouter;
 

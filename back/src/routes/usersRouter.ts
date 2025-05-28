@@ -3,13 +3,13 @@ import { getUserByIdController, getUsersController, loginUsersController, regist
 
 const usersRouter = Router ();
 
-usersRouter.get("/", getUsersController)
+usersRouter.get("/user", getUsersController)
 
-usersRouter.get("/:id", getUserByIdController)
+usersRouter.get("/user/:id", getUserByIdController)
 
-usersRouter.post("/register", registerUsersController)
+usersRouter.post("/user/register", registerUsersController)
 
-usersRouter.post("/login", loginUsersController)
+usersRouter.post("/user/login", loginUsersController)
 
 
 export default usersRouter;

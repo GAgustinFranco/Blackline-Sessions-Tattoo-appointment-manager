@@ -1,42 +1,44 @@
+import { appointmentRepository } from "../config/data-source";
 import ICreateAppointmentDTO from "../dtos/ICreateAppointmentDTO";
-import IAppointment from "../interfaces/IAppoitment";
+import Appointment from "../entities/Appointment";
+import User from "../entities/User";
+import { getUserByIdService } from "./usersService";
 
-const appointmentsDB: IAppointment[] = [];
-let appointmentsId: number = 1;
-
-export const getAppointmentsService = async (): Promise<IAppointment[]> => {
-    return appointmentsDB;
+export const getAppointmentsService = async (): Promise<Appointment[]> => {
+    return await appointmentRepository.find();
 }
 
-export const getAppointmentByIdService = async (id: number): Promise<IAppointment> => {
-    const foundAppointment: IAppointment | undefined = appointmentsDB.find(
-        (appointment) => appointment.id == id
-    );
+export const getAppointmentByIdService = async (id: number): Promise<Appointment> => {
+    const foundAppointment: Appointment | null = await appointmentRepository.findOne({
+        where: {id}
+    });
     if(!foundAppointment) throw new Error("Appointment not found");
     return foundAppointment;
 }
 
 export const createAppointmentService = async (
-    createAppointmentDTO: ICreateAppointmentDTO): Promise<IAppointment> => {
-  
-    const newAppointment: IAppointment = {
-        id: appointmentsId++,
+    createAppointmentDTO: ICreateAppointmentDTO): Promise<Appointment> => {
+    const user: User = await getUserByIdService(createAppointmentDTO.userId)
+
+    const newAppointment: Appointment = await appointmentRepository.create ({
         date: createAppointmentDTO.date,
         time: createAppointmentDTO.time,
-        userId: createAppointmentDTO.userId,
+        user: user,
         status: createAppointmentDTO.status
-    }
+    })
 
-    appointmentsDB.push(newAppointment)
-    return newAppointment;
+    const results: Appointment = await appointmentRepository.save(newAppointment)
+    return results;
 }
 
 export const cancelAppointmentsService = async (id: number): Promise<number>=>{
-    const foundAppointment: IAppointment = await getAppointmentByIdService(id);
+    const foundAppointment: Appointment = await getAppointmentByIdService(id);
 
     if(foundAppointment.status == "cancelled")
         throw new Error ("The appointment is cancelled")
 
     foundAppointment.status = "cancelled";
-    return foundAppointment.id;
+    const results:Appointment = await  appointmentRepository.save(foundAppointment);
+    
+    return results.id;
 }
