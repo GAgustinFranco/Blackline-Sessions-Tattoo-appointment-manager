@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { createUserService, getUserByIdService, getUserService } from "../services/usersService";
 import { validateCredentialServise } from "../services/credentialsServices";
 import User from "../entities/User";
+import { userRepository } from "../config/data-source";
 
 export const getUsersController = async (req:Request, res:Response) => {
     try{
@@ -53,10 +54,24 @@ export const registerUsersController = async (req:Request, res:Response) => {
 export const loginUsersController = async (req:Request, res:Response) => {
     try{
         const {username, password} = req.body;
-        const credentialId: number = await validateCredentialServise(username, password);
+        const credentialId = await validateCredentialServise(username, password);
+        const user: User | null = await userRepository.findOne({
+            where:{credentialsId:credentialId}
+        })
+
+        if(!user){
+            throw new Error("User not found with these credentials")
+        }
+
         res.status(200).json({
             success: true,
-            data: credentialId
+            user:{
+                id:user.id,
+                name:user.name,
+                email:user.email,
+                birthdate:user.birthdate.toISOString().split("T")[0],
+                nDni: user.nDni
+            }
         })
     }   catch (error:any) {
         res.status(400).json({

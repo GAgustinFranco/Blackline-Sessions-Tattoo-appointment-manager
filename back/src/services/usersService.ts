@@ -9,7 +9,10 @@ export const getUserService = async (): Promise<User[]> => {
 
 export const getUserByIdService = async (id: number): Promise<User> => {
     const foundUser: User | null = await userRepository.findOne({
-        where: {id}    
+        where: {id},
+        relations:{
+            appointments:true
+        }    
     })
     if(!foundUser) throw new Error("User not found");
     return foundUser;
