@@ -15,10 +15,10 @@ export const validateCredentialServise = async (username: string, password: stri
     const foundCredential: Credential | null = await credentialRepository.findOneBy({username})
 
     if(!foundCredential){
-        throw new Error("No existe el username")
+        throw new Error("The username does not exist")
     }
     if(foundCredential.password != password){
-        throw new Error("Contraseña incorrecta");
+        throw new Error("Incorrect password");
     }
 
     return foundCredential.id;
