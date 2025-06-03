@@ -1,0 +1,13 @@
+.header{
+
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.navLinks li a {
+    text-decoration: none;
+}
