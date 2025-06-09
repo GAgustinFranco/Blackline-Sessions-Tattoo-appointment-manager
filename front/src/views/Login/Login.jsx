@@ -26,7 +26,12 @@ const Login = () => {
     const handleOnSubmit = async (event) => {
         event.preventDefault();
         try {    
-            await axios.post("http://localhost:8080/users/user/login", form);
+            const response = await axios.post("http://localhost:8080/users/user/login", form);
+
+            if(response.data && response.data.user){
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+            } 
+
             alert("User logged in successfully!");
         } catch (error) {
             alert(`Error logging in to user: ${error.message}`)
