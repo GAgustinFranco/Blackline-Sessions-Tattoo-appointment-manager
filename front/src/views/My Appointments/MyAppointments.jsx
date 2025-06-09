@@ -1,10 +1,15 @@
-import appointments from "../../helpers/myAppointments";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppointmentCard from "../../components/AppointmentCard/AppointmentCard";
+import axios from "axios"
 
 const MyAppointments = () => {
 
-    const [myAppointments, setMyAppointments] = useState(appointments)
+    const [myAppointments, setMyAppointments] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/appointments/appointment")
+        .then((res) => setMyAppointments(res.data.data))
+    }, [])
         return (
             <>                
                 <h2>Mis turnos</h2>

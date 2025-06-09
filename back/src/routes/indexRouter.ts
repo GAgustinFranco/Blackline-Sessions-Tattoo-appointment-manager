@@ -1,5 +1,4 @@
 import {Router} from "express";
-import { registerUsersController, getUsersController, loginUsersController } from "../controllers/usersController";
 import appointmentsRouter from "./appointmentsRouter";
 import usersRouter from "./usersRouter";
 
