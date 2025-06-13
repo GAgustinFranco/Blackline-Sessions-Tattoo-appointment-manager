@@ -13,6 +13,12 @@ export const validateRegister = (input) => {
 
     if (!input.birthdate) {
         errors.birthdate = "Birthdate is required";
+    } else {
+        const birthdate = new Date(input.birthdate);
+        const age = new Date().getFullYear() - birthdate.getFullYear();
+        if (age < 18) {
+            errors.birthdate = "You must be at least 18 years old to register";
+        }
     }
 
     if (!input.nDni.trim()) {
@@ -45,6 +51,10 @@ export const validateRegister = (input) => {
         errors.password = "Password must contain at least one number";
     } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(input.password)) {
         errors.password = "Password must contain at least one special character";
+    }
+
+    if (input.password !== input.confirmPassword) {
+        errors.confirmPassword = "Passwords do not match";
     }
 
     return errors;

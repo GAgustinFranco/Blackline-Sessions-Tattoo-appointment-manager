@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { cancelAppointmentsService, createAppointmentService, getAppointmentByIdService, getAppointmentsService } from "../services/appointmentsService";
 import ICreateAppointmentDTO from "../dtos/ICreateAppointmentDTO";
 import Appointment from "../entities/Appointment";
+import { AppDataSource } from "../config/data-source";
 
 export const getAppointmentsController = async (req:Request, res:Response) => {
     try{
@@ -53,15 +54,40 @@ export const createAppointmentsController = async (req:Request, res:Response) =>
 export const cancelAppointmentsController = async (req:Request, res:Response) => {
     try{
         const {id} =req.params;
+        
         const appointmentsId: number = await cancelAppointmentsService(Number(id));
         res.status(200).json({
             success: true,
             data: appointmentsId
         })
     }   catch (error:any) {
+        
         res.status(404).json({
             success:false,
             message: error.message
         })
     }
     }
+
+    export const getAppointmentsByUserIdController = async (
+        req: Request<{ userId: string }>,
+        res: Response
+    ) => {
+        const { userId } = req.params;
+        try {
+            const appointmentRepository = AppDataSource.getRepository(Appointment);
+            const appointments: Appointment[] = await appointmentRepository.find({
+                where: { user: { id: Number(userId) } },
+                relations: ["user"],
+            });
+            res.status(200).json({
+                success: true,
+                data: appointments,
+            });
+        } catch (error: any) {
+            res.status(404).json({
+                success: false,
+                message: error.message || "Error fetching appointments",
+            });
+        }
+    };

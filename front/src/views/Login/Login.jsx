@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
 import {validateLogin} from "../../helpers/validateLogin";
+import { useState, useContext } from "react";
+import { UserContext } from "../../../context/UserContext.jsx";
 
 const Login = () => {
     const [form, setForm] = useState({
@@ -13,27 +14,47 @@ const Login = () => {
         password: "Password is required"
     })
     
+    const {setUser} = useContext(UserContext);
+
     const handleInputChange = (event) => {
         const { name, value} = event.target;
-        setForm({
+        const updateForm = {
             ...form,
             [name]:value
-        })
+        }
+        
+        setForm(updateForm);
 
-        setErrors(validateLogin(form));
+        setErrors(validateLogin(updateForm));
     }
 
     const handleOnSubmit = async (event) => {
         event.preventDefault();
+
+        const validationErrors = validateLogin(form);
+                setErrors(validationErrors);
+                if (Object.keys(validationErrors).length > 0) {
+                    alert("Please fix the errors before submitting.");
+                    return;
+                } 
         try {    
             const response = await axios.post("http://localhost:8080/users/user/login", form);
 
-            if(response.data && response.data.user){
-                localStorage.setItem("user", JSON.stringify(response.data.user));
-            } 
+            if (response.data && response.data.user) {
+                const user = response.data.user;
 
+                const appointmentsRes = await axios.get(`http://localhost:8080/appointments/appointment/user/${user.id}`);
+    
+                const fullUserData = {
+                    ...user,
+                    appointments: appointmentsRes.data
+                };
+    
+                localStorage.setItem("user", JSON.stringify(fullUserData));
+                setUser(fullUserData);
+                
             alert("User logged in successfully!");
-        } catch (error) {
+        }} catch (error) {
             alert(`Error logging in to user: ${error.message}`)
         }
         
@@ -54,7 +75,7 @@ const Login = () => {
                 {errors.password && <p style = {{color: "red"}}>{errors.password}</p>}
             </div>
 
-            <button>Login</button>
+            <button disabled={Object.keys(errors).length > 0}>Login</button>
         </form>
     )
 }

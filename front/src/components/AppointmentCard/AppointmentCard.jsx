@@ -1,7 +1,10 @@
 import styles from "./AppointmentCard.module.css";
 
-const AppointmentCard = ({appointment}) => {
-    
+const AppointmentCard = ({appointment, onCancel}) => {
+    const handleCancel = () => {
+        onCancel(appointment.id)
+    }
+
     return (
         <div>
             <p>
@@ -13,6 +16,10 @@ const AppointmentCard = ({appointment}) => {
             <p>
                 <strong>Status:</strong> {appointment.status}
             </p>
+
+            {appointment.status === "active" && (
+                <button onClick = {handleCancel}>Cancel appointment</button>
+            )}
         </div>
     )
 }

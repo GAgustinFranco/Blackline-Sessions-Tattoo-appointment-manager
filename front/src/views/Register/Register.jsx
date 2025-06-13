@@ -9,7 +9,8 @@ const Register = () => {
         birthdate:"", 
         nDni: "",
         username:"",
-        password:""
+        password:"",
+        confirmPassword:""
     })
 
     const [errors, setErrors] = useState({
@@ -18,17 +19,19 @@ const Register = () => {
         birthdate: "Birthdate is required", 
         nDni: "nDni is required",
         username: "Username is required",
-        password: "Password is required"
+        password: "Password is required",
+        confirmPassword: "Confirm Password is required"
     })
 
     const handleInputChange = (event) => {
         const { name, value} = event.target;
-        setForm({
+        const updateForm = {
             ...form,
             [name]:value
-        })
+        }
         
-        setErrors(validateRegister(form));
+        setForm(updateForm);
+        setErrors(validateRegister(updateForm));
     }
 
     const handleOnSubmit = async (event) => {
@@ -40,6 +43,13 @@ const Register = () => {
             nDni: Number(form.nDni)
         };
 
+        const validationErrors = validateRegister(form);
+                setErrors(validationErrors);
+                if (Object.keys(validationErrors).length > 0) {
+                    alert("Please fix the errors before submitting.");
+                    return;
+                }
+        
         try {    
             await axios.post("http://localhost:8080/users/user/register", formattedForm);
             alert("User registered successfully!");
@@ -88,7 +98,13 @@ const Register = () => {
                 {errors.password && <p style = {{color: "red"}}>{errors.password}</p>}
             </div>
 
-            <button>Register</button>
+            <div>
+                <label>Confirm Password</label>
+                <input type="password" value={form.confirmPassword} name="confirmPassword" onChange={handleInputChange}/>
+                {errors.confirmPassword && <p style = {{color: "red"}}>{errors.confirmPassword}</p>}
+            </div>
+
+            <button disabled={Object.keys(errors).length > 0}>Register</button>
         </form>
     )
     
