@@ -2,6 +2,7 @@ import axios from "axios";
 import {validateLogin} from "../../helpers/validateLogin";
 import { useState, useContext } from "react";
 import { UserContext } from "../../../context/UserContext.jsx";
+import styles from "./Login.module.css";
 
 const Login = () => {
     const [form, setForm] = useState({
@@ -61,22 +62,29 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit = {handleOnSubmit}>
-            <h2>Login</h2>
-            <div>
-                <label>Username:</label>
-                <input type="text" value={form.username} name="username" onChange={handleInputChange}/>
-                {errors.username && <p style = {{color: "red"}}>{errors.username}</p>}
-            </div>
+        <div>
+            <form onSubmit = {handleOnSubmit} className={styles.container}>
+                <h2>Login</h2>
+                <div className={styles.inputStyle}>
+                    <label>Username:</label>
+                    <input type="text" value={form.username} name="username" onChange={handleInputChange}/>
+                </div>
+                    {errors.username && <p className={styles.errors}>{errors.username}</p>}
 
-            <div>
-                <label>Password:</label>
-                <input type="password" value={form.password} name="password" onChange={handleInputChange}/>
-                {errors.password && <p style = {{color: "red"}}>{errors.password}</p>}
-            </div>
+                <div className={styles.inputStyle}>
+                    <label>Password:</label>
+                    <input type="password" value={form.password} name="password" onChange={handleInputChange}/>
+                </div>
+                    {errors.password && <p className={styles.errors}>{errors.password}</p>}
 
-            <button disabled={Object.keys(errors).length > 0}>Login</button>
-        </form>
+                <button className={styles.buttonLogin} disabled={Object.keys(errors).length > 0}>Login</button>
+            </form>
+
+            <video autoPlay muted loop className={styles.videoBackground}>
+                            <source src="/videos/4126114-uhd_4096_2160_25fps.mp4" type="video/mp4" />
+                            Tu navegador no soporta videos HTML5
+                        </video>
+        </div>
     )
 }
 

@@ -1,4 +1,95 @@
-* {
-    margin: 0;
-    padding:0;    
+/* Reset CSS */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+dl,
+dd,
+ul,
+ol,
+li,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+button,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul, ol {
+  list-style: none;
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Reset font styles for most elements */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: 1.15;
+}
+
+/* Remove text-decoration from anchor elements */
+a {
+  text-decoration: none;
+}
+
+/* ARIA roles */
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Remove borders on table elements */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove padding on all elements */
+body,
+div,
+section,
+article,
+aside,
+header,
+footer,
+nav,
+hgroup,
+figure,
+figcaption,
+details,
+summary,
+menu,
+fieldset,
+blockquote,
+output,
+p {
+  padding: 0;
 }

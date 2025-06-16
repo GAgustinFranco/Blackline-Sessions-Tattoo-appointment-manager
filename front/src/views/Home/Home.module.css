@@ -1,0 +1,61 @@
+.container {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    margin-right: 10rem;
+    margin-left: 10rem;
+}
+
+.videoBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+.p1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3.0rem;
+    color: aliceblue;
+    text-align: center;
+}
+
+.p2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.0rem;
+    color: aliceblue;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.buttonReserve {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: transparent;
+    border: solid 2px aliceblue;
+    border-radius: 1rem;
+    padding: 0.8rem 1rem 0.4rem 1rem;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-top: 3.2rem;
+    color: aliceblue;
+}
+
+.buttonReserve:hover {
+    background-color: aliceblue;
+    color: black;
+    transition: 0.3s ease-in-out;
+}

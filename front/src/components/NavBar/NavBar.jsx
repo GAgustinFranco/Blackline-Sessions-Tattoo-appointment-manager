@@ -4,6 +4,7 @@ import LogOutButton from "../LogOutButton/LogOutButton.jsx";
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext.jsx";
 
+
 const NavBar = () => {
     const { user } = useContext(UserContext); 
 
@@ -11,7 +12,7 @@ const NavBar = () => {
         <header className = {styles.header}>
             <h1>Blackline Sessions</h1>
             <nav className={styles.navLinks}>
-                <ul>
+                <ul className={styles.navList}>
                     <li><Link to = "/home">Home</Link></li>
                     {user?(
                     <>
@@ -19,7 +20,7 @@ const NavBar = () => {
                         <li><Link to = "appointment">Create Appointment</Link></li>
                         <li><Link to = "contact">Contact</Link></li>
                         <li><Link to = "about">About</Link></li>
-                        <li><LogOutButton/></li>
+                        <li className={styles.logout}><LogOutButton/></li>
                     </>
                     ):(
                     <> 
