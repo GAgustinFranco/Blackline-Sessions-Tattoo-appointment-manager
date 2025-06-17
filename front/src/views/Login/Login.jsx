@@ -52,7 +52,9 @@ const Login = () => {
     
                 const fullUserData = {
                     ...user,
-                    appointments: appointmentsRes.data
+                    appointments: Array.isArray(appointmentsRes.data)
+                        ? appointmentsRes.data
+                        : appointmentsRes.data.data || [] 
                 };
     
                 localStorage.setItem("user", JSON.stringify(fullUserData));
