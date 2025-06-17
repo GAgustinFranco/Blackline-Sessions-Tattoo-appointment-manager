@@ -6,7 +6,7 @@ const AppointmentCard = ({appointment, onCancel}) => {
     }
 
     return (
-        <div>
+        <div className={`${styles.appointmentCard} ${appointment.status === "cancelled" ? styles.cancelled : ""}`}>
             <p>
                 <strong>Date:</strong> {appointment.date}
             </p>
@@ -18,7 +18,7 @@ const AppointmentCard = ({appointment, onCancel}) => {
             </p>
 
             {appointment.status === "active" && (
-                <button onClick = {handleCancel}>Cancel appointment</button>
+                <button className={styles.cancelAppointmentButton} onClick = {handleCancel}>Cancel appointment</button>
             )}
         </div>
     )

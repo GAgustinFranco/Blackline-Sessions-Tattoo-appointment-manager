@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import {validateAppointment} from "../../helpers/validateAppointment.js";
 import { UserContext } from "../../../context/UserContext.jsx";
+import styles from "./CreateAppointment.module.css";
 
 const CreateAppointment = () => {
     const [form, setForm] = useState({
@@ -88,22 +89,28 @@ const CreateAppointment = () => {
         };
 
     return (
-        <form onSubmit = {handleOnSubmit}>
-            <h2>Create Appointment</h2>
-            <div>
-                <label>Date:</label>
-                <input type="date" value={form.date} name="date" onChange={handleInputChange}/>
-                {errors.date && <p style = {{color: "red"}}>{errors.date}</p>}
-            </div>
+        <div>
+            <form onSubmit = {handleOnSubmit} className={styles.container}>
+                <h2>Create Appointment</h2>
+                <div className={styles.inputStyle}>
+                    <label>Date:</label>
+                    <input type="date" value={form.date} name="date" onChange={handleInputChange}/>
+                    {errors.date && <p style = {{color: "red"}}>{errors.date}</p>}
+                </div>
 
-            <div>
-                <label>Time:</label>
-                <input type="time" value={form.time} name="time" onChange={handleInputChange}/>
-                {errors.time && <p style = {{color: "red"}}>{errors.time}</p>}
-            </div>
+                <div className={styles.inputStyle}>
+                    <label>Time:</label>
+                    <input type="time" value={form.time} name="time" onChange={handleInputChange}/>
+                    {errors.time && <p style = {{color: "red"}}>{errors.time}</p>}
+                </div>
 
-            <button disabled={Object.keys(errors).length > 0}>Create Appointment</button>
-        </form>
+                <button className={styles.buttonCreateAppointment}disabled={Object.keys(errors).length > 0}>Create Appointment</button>
+            </form>
+            <video autoPlay muted loop className={styles.videoBackground}>
+                <source src="/videos/1086524-hd_1280_720_25fps.mp4" type="video/mp4" />
+                Tu navegador no soporta videos HTML5
+            </video>
+        </div>
     )
 }
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import {validateRegister} from "../../helpers/validateRegister"
+import styles from "./Register.module.css";
 
 const Register = () => {
     const [form, setForm] = useState({
@@ -60,52 +61,63 @@ const Register = () => {
     }
 
     return (
-        <form onSubmit = {handleOnSubmit}>
-            <h2>Register</h2>
-            <div>
-                <label>Name:</label>
-                <input type="text" value={form.name} name="name" onChange={handleInputChange}/>
-                {errors.name && <p style = {{color: "red"}}>{errors.name}</p>}
-            </div>
-            
-            <div>
-                <label>Email:</label>
-                <input type="text" value={form.email} name="email" onChange={handleInputChange}/>
-                {errors.email && <p style = {{color: "red"}}>{errors.email}</p>}
-            </div>
+        <div>
+            <form onSubmit = {handleOnSubmit} className={styles.container}>
+                <h2>Register</h2>
+                <div className={styles.inputContainer}>
+                    <div className={styles.inputStyle}>
+                        <label>Name:</label>
+                        <input type="text" value={form.name} name="name" onChange={handleInputChange}/>
+                        {errors.name && <p className={styles.errors}>{errors.name}</p>}
+                    </div>
+                    
+                    <div className={styles.inputStyle}>
+                        <label>Email:</label>
+                        <input type="text" value={form.email} name="email" onChange={handleInputChange}/>
+                        {errors.email && <p className={styles.errors}>{errors.email}</p>}
+                    </div>
 
-            <div>
-                <label>Birthdate:</label>
-                <input type="date" value={form.birthdate} name="birthdate" onChange={handleInputChange}/>
-                {errors.birthdate && <p style = {{color: "red"}}>{errors.birthdate}</p>}
-            </div>
+                    <div className={styles.inputStyle}>
+                        <label>Birthdate:</label>
+                        <input type="date" value={form.birthdate} name="birthdate" onChange={handleInputChange}/>
+                        {errors.birthdate && <p className={styles.errors}>{errors.birthdate}</p>}
+                    </div>
+                </div>
 
-            <div>
-                <label>nDni:</label>
-                <input type="number" value={form.nDni} name="nDni" onChange={handleInputChange}/>
-                {errors.nDni && <p style = {{color: "red"}}>{errors.nDni}</p>}
-            </div>
+                <div className={styles.inputContainer}>
+                    <div className={styles.inputStyle}>
+                        <label>nDni:</label>
+                        <input type="number" value={form.nDni} name="nDni" onChange={handleInputChange}/>
+                        {errors.nDni && <p className={styles.errors}>{errors.nDni}</p>}
+                    </div>
 
-            <div>
-                <label>Username:</label>
-                <input type="text" value={form.username} name="username" onChange={handleInputChange}/>
-                {errors.username && <p style = {{color: "red"}}>{errors.username}</p>}
-            </div>
+                    <div className={styles.inputStyle}>
+                        <label>Username:</label>
+                        <input type="text" value={form.username} name="username" onChange={handleInputChange}/>
+                        {errors.username && <p className={styles.errors}>{errors.username}</p>}
+                    </div>
 
-            <div>
-                <label>Password:</label>
-                <input type="password" value={form.password} name="password" onChange={handleInputChange}/>
-                {errors.password && <p style = {{color: "red"}}>{errors.password}</p>}
-            </div>
+                    <div className={styles.inputStyle}>
+                        <label>Password:</label>
+                        <input type="password" value={form.password} name="password" onChange={handleInputChange}/>
+                        {errors.password && <p className={styles.errors}>{errors.password}</p>}
+                    </div>
 
-            <div>
-                <label>Confirm Password</label>
-                <input type="password" value={form.confirmPassword} name="confirmPassword" onChange={handleInputChange}/>
-                {errors.confirmPassword && <p style = {{color: "red"}}>{errors.confirmPassword}</p>}
-            </div>
+                    <div className={styles.inputStyle}>
+                        <label>Confirm Password</label>
+                        <input type="password" value={form.confirmPassword} name="confirmPassword" onChange={handleInputChange}/>
+                        {errors.confirmPassword && <p className={styles.errors}>{errors.confirmPassword}</p>}
+                    </div>
+                </div>
 
-            <button disabled={Object.keys(errors).length > 0}>Register</button>
-        </form>
+                <button className={styles.buttonRegister} disabled={Object.keys(errors).length > 0}>Register</button>
+            </form>
+
+            <video autoPlay muted loop className={styles.videoBackground}>
+                <source src="videos/3345545-hd_1920_1080_25fps.mp4" type="video/mp4" />
+                Tu navegador no soporta videos HTML5
+            </video>
+        </div>
     )
     
 }

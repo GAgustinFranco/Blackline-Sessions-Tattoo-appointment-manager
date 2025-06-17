@@ -81,9 +81,9 @@ const Login = () => {
             </form>
 
             <video autoPlay muted loop className={styles.videoBackground}>
-                            <source src="/videos/4126114-uhd_4096_2160_25fps.mp4" type="video/mp4" />
-                            Tu navegador no soporta videos HTML5
-                        </video>
+                <source src="/videos/4126114-uhd_4096_2160_25fps.mp4" type="video/mp4" />
+                Tu navegador no soporta videos HTML5
+            </video>
         </div>
     )
 }

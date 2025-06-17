@@ -1,0 +1,119 @@
+body {
+    background-image: url(https://cdn.wallpapersafari.com/39/37/EfYbdC.jpg);
+    color: aliceblue;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    padding-top: 2rem;
+}
+
+.section {
+    color: aliceblue;
+    padding-top: 4rem;
+    padding-bottom: 0rem;
+    margin-top: 3rem;
+}
+
+.container {
+    max-width: 100vh;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    margin-bottom: 1rem;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: aliceblue;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-inline: auto;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 320px;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #444;
+}
+
+.name {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #00ff88;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #ccc;
+}
+
+.imgContainer1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 0rem;
+    gap: 1rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.imgContainer2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin-bottom: 0rem;
+    padding-bottom: 2.5rem;
+}
+
+.imgContacts {
+    height: 2rem;
+}
+.imgContacts:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}

@@ -1,0 +1,100 @@
+body {
+    background-image: url(https://cdn.wallpapersafari.com/39/37/EfYbdC.jpg);
+    color: aliceblue;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    padding-top: 2rem;
+}
+
+.lineupSection {
+    padding: 7rem 1rem;
+    text-align: center;
+    color: aliceblue;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    margin-bottom: 1rem;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: aliceblue;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-inline: auto;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+.grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.flyer {
+    background: linear-gradient(145deg, #222, #000);
+    border: 2px solid #00ff88;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    font-family: "Bebas Neue", sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.flyer:hover {
+    transform: scale(1.02);
+}
+
+.band {
+    font-size: 2rem;
+    color: #00ff88;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    font-size: 1.1rem;
+    color: aliceblue;
+    margin-bottom: 0.25rem;
+}
+
+.genre {
+    font-size: 0.9rem;
+    color: #aaa;
+    font-family: "Inter", sans-serif;
+}
+
+.img1 {
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    object-fit: cover; 
+    width: 100%;
+    height: 23rem;
+}
+
+.img2 {
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    object-fit: cover; 
+    width: 100%;
+    height: 23rem;
+}
+
+.img3 {
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    object-fit: cover; 
+    width: 100%;
+    height: 23rem;
+}

@@ -1,0 +1,85 @@
+.container {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    margin-right: 10rem;
+    margin-left: 10rem;
+    gap: 1.5rem;
+
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4rem;
+    color: aliceblue;
+    text-align: center;
+}
+
+.container input {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: transparent;
+    border: solid 2px aliceblue;
+    border-radius: 1rem;
+    padding: 0.5rem 0.7rem;
+    color: aliceblue;
+    font-size: 1.0rem;
+    width: 17rem;
+}
+
+.container input[type="date"],
+.container input[type="time"] {
+    color-scheme: dark;
+    cursor: pointer;
+}
+
+input[type="date"],
+input[type="time"] {
+    cursor: pointer;
+}
+
+.videoBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; 
+}
+
+.buttonCreateAppointment {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: transparent;
+    border: solid 2px aliceblue;
+    border-radius: 1rem;
+    padding: 0.5rem 0.7rem 0.25rem 0.7rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: aliceblue;
+}
+
+.buttonCreateAppointment:hover {
+    background-color: aliceblue;
+    color: black;
+    transition: 0.3s ease-in-out;
+}
+
+.inputStyle {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.errors {
+    color: red;
+    font-size: 1.1rem;
+    
+}

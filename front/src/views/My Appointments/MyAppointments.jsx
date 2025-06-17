@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AppointmentCard from "../../components/AppointmentCard/AppointmentCard";
 import axios from "axios";
+import styles from "./MyAppointments.module.css";
 
 const MyAppointments = () => {
   const [myAppointments, setMyAppointments] = useState(null); 
@@ -46,15 +47,17 @@ const MyAppointments = () => {
 
   return (
     <>
-      <h2>Mis turnos</h2>
-      <div>
-        {myAppointments.length > 0 ? (
-          myAppointments.map((a) => (
-            <AppointmentCard key={a.id} appointment={a} onCancel={cancelAppointment} />
-          ))
-        ) : (
-          <p>No tenés turnos agendados todavía.</p>
-        )}
+      <div className={styles.container}>
+        <h2 className={styles.title}>Mis turnos</h2>
+        <div className={styles.appointmentsContainer}>
+          {myAppointments.length > 0 ? (
+            myAppointments.map((a) => (
+              <AppointmentCard key={a.id} appointment={a} onCancel={cancelAppointment} />
+            ))
+          ) : (
+            <p>No tenés turnos agendados todavía.</p>
+          )}
+        </div>
       </div>
     </>
   );

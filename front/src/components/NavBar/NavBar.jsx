@@ -18,7 +18,7 @@ const NavBar = () => {
                     <>
                         <li><Link to = "myAppointments">My Appointments</Link></li>
                         <li><Link to = "appointment">Create Appointment</Link></li>
-                        <li><Link to = "contact">Contact</Link></li>
+                        <li><Link to = "lineup">Lineup</Link></li>
                         <li><Link to = "about">About</Link></li>
                         <li className={styles.logout}><LogOutButton/></li>
                     </>
@@ -26,7 +26,7 @@ const NavBar = () => {
                     <> 
                         <li><Link to = "login">Login</Link></li>
                         <li><Link to = "register">Register</Link></li>
-                        <li><Link to = "contact">Contact</Link></li>
+                        <li><Link to = "lineup">Lineup</Link></li>
                         <li><Link to = "about">About</Link></li>
                     </>
                 )}

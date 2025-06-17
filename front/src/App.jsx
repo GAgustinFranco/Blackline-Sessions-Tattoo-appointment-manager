@@ -1,7 +1,7 @@
 import Home from './views/Home/Home'
 import NavBar from './components/NavBar/NavBar'
 import MyAppointments from './views/My Appointments/MyAppointments'
-import Contact from './views/Contact/Contact'
+import Lineup from './views/Lineup/Lineup'
 import About from "./views/About/About"
 import Login from "./views/Login/Login"
 import Register from './views/Register/Register'
@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home/>}/>
         <Route path="/myAppointments" element={<MyAppointments/>}/> 
-        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/lineup" element={<Lineup/>}/>
         <Route path="/about" element = {<About/>}/>
         <Route path="/login" element = {<Login/>}/>
         <Route path="/register" element={<Register/>}/>
