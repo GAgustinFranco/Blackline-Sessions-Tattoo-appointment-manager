@@ -3,8 +3,12 @@ import {validateLogin} from "../../helpers/validateLogin";
 import { useState, useContext } from "react";
 import { UserContext } from "../../../context/UserContext.jsx";
 import styles from "./Login.module.css";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
     const [form, setForm] = useState({
         username:"",
         password:""
@@ -55,6 +59,7 @@ const Login = () => {
                 setUser(fullUserData);
                 
             alert("User logged in successfully!");
+            navigate("/home");
         }} catch (error) {
             alert(`Error logging in to user: ${error.message}`)
         }
