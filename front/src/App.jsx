@@ -5,10 +5,11 @@ import Lineup from './views/Lineup/Lineup'
 import About from "./views/About/About"
 import Login from "./views/Login/Login"
 import Register from './views/Register/Register'
-import { Routes, Route } from "react-router-dom"
 import CreateAppointment from './views/Create Appointment/CreateAppointment'
-import { useContext, useEffect } from 'react'
+
+import { Routes, Route } from "react-router-dom"
 import { UserContext } from '../context/UserContext'
+import { useContext, useEffect } from 'react'
 import { fetchUserAppointments } from './helpers/fetchAppointments'
 
 

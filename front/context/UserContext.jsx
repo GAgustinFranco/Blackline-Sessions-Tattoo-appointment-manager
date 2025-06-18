@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
         if (user) {
             localStorage.setItem('user', JSON.stringify(user));
         } else {
-          localStorage.removeItem('user'); // Soporte para cierre de sesión
+            localStorage.removeItem('user'); 
         }
         }, [user]);
 
