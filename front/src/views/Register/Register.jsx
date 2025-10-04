@@ -55,7 +55,6 @@ const Register = () => {
             await axios.post("http://localhost:8080/users/user/register", formattedForm);
             alert("User registered successfully!");
         } catch (error) {
-            console.error("Backend error:", error.response.data);
             alert(`Error registering user: ${error.message}`);
         }     
     }

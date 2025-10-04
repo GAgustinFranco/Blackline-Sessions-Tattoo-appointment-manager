@@ -46,10 +46,10 @@ const CreateAppointment = () => {
         const hour = selectDateTime.getHours();
 
         const isValidDay = [4, 5, 6].includes(day);
-        const isValidHour = hour >= 19 || hour === 0;
+        const isValidHour = hour >= 19 || hour === 23;
 
         if (!isValidDay || !isValidHour) {
-            alert("Appointments can only be scheduled on Thursday, Friday, or Saturday between 19:00 and 00:00.");
+            alert("Appointments can only be scheduled on Thursday, Friday, or Saturday between 19:00 and 23:00.");
             return;
     }
 

@@ -14,7 +14,6 @@ const MyAppointments = () => {
         const appointments = user.appointments || [];
         setMyAppointments(appointments);
       } catch (error) {
-        console.error("Error al leer los turnos desde localStorage:", error);
         setMyAppointments([]);
       }
     } else {
