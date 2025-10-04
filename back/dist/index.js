@@ -5,6 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const envs_1 = require("./config/envs");
 const server_1 = __importDefault(require("./server"));
-server_1.default.listen(envs_1.ENV, () => {
-    console.log(`Server up and running on port: http://localhost:${PORT}`);
-});
+require("reflect-metadata");
+const data_source_1 = require("./config/data-source");
+data_source_1.AppDataSource.initialize()
+    .then(() => {
+    server_1.default.listen(envs_1.PORT, () => {
+        console.log(`Server up and running on port: http://localhost:${envs_1.PORT}`);
+    });
+})
+    .catch((error) => console.log(error));
