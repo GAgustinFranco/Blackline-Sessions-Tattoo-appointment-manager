@@ -1,4 +1,4 @@
-## ✒️ Blackline Sessions
+## ✒️ Blackline Sessions - Tattoo appointment manager
 
 Aplicación web fullstack para gestión de turnos y experiencia artística en el estudio de tatuajes Blackline Sessions.
 Combina una interfaz moderna en React con un backend robusto en Express y PostgreSQL, permitiendo a los usuarios registrarse, iniciar sesión, reservar, consultar y cancelar turnos.
